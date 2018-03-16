@@ -1,0 +1,9 @@
+version: "3.3"
+services:
+  web:
+    build: .
+    ports:
+      - 8080:4242
+    environment:
+      - NGINX_SOURCE=https://ddengler.github.io
+    
