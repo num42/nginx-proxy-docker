@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    machine: true
+
+    steps:
+      - checkout
+      - run:
+          name: Build container
+          command: |
+            docker build -t num42/nginx-proxy-docker:latest -t num42/nginx-proxy-docker:dev .
+
+      - deploy:
+          name: Build and push Docker image
+          command: |
+            if [ "$CIRCLE_BRANCH" == "master" ]; then
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+            docker push num42/nginx-proxy-docker:latest;
+            fi
+            if [ "$CIRCLE_BRANCH" == "dev" ]; then
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+            docker push num42/nginx-proxy-docker:dev;
+            fi
