@@ -5,5 +5,5 @@ services:
     ports:
       - 8080:4242
     environment:
-      - NGINX_SOURCE=https://ddengler.github.io
+      - NGINX_SOURCE=https://number42.netlify.com/
     
