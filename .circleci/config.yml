@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     machine: true
+    environment:
+      DOCKER_IMAGE_NAME: proxy
 
     steps:
       - checkout
